@@ -1,4 +1,4 @@
-const menu = [
+let menu = [
   {
     id: 1,
     title: 'Bryggkaffe',
