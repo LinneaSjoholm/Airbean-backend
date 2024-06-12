@@ -1,7 +1,7 @@
 
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { userDb } from '../config/db.js'; // Anta att du har en userDb för användardata
+import { userDb } from '../config/db.js';
 
 
 // Funktion för att registrera en ny användare
