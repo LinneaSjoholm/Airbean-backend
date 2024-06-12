@@ -71,10 +71,10 @@ async function deleteProductFromMenu (req, res) {
         if(!product) {
             return res.status(404).json({ message: 'Product not found' });
         }
-        // Ta bort produkten från menyn
+        // Ta bort produkten från menyn { menuDb}
         await menuDb.remove({ _id: req.params.id });
-        // Hitta indexet för produkten i menyn
-        const index = menu.findIndex(item => item.id === req.params.id);
+        // Hitta indexet för produkten i menyn från { menu }
+        const index = menu.findIndex(item => item.id === productId);
         // Ta bort produkten från menyn
         if(index !== -1) {
             menu.splice(index, 1);
