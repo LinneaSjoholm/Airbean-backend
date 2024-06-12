@@ -63,27 +63,29 @@ async function updateProductInMenu (req, res) {
 
 // Funktion för att ta bort en produkt från menyn
 async function deleteProductFromMenu (req, res) {
-   
     try {
         // Hämta produktens id från URL:en
-        const productId = parseInt(req.params.id);
-        const  product = await menuDb.findOne({  id: productId});
-        if(!product) {
+        const itemId = parseInt(req.params.id);
+        
+        // Sök efter produkten i den befintliga menyn i minnet { menu }
+        const existingProductIndex = menu.findIndex(item => item.id === itemId);
+        
+        // Om produkten inte finns i minnet, returnera ett felmeddelande
+        if (existingProductIndex === -1) {
             return res.status(404).json({ message: 'Product not found' });
         }
-        // Ta bort produkten från menyn { menuDb}
+
+        // Ta bort produkten från den befintliga menyn i minnet
+        menu.splice(existingProductIndex, 1);
+
+        // Ta bort produkten från databasen { menuDb }
         await menuDb.remove({ _id: req.params.id });
-        // Hitta indexet för produkten i menyn från { menu }
-        const index = menu.findIndex(item => item.id === productId);
-        // Ta bort produkten från menyn
-        if(index !== -1) {
-            menu.splice(index, 1);
-        }
+
         // Skicka svar till klienten
-        res.status(200).json({ message: 'Product removed successfully' });
+        res.status(200).json({ message: 'Product removed successfully', updatedMenu: menu });
     } catch (error) {
         res.status(500).json({ message: 'Error removing product from menu', error: error.message });
-    }
+    };
 };
 
 export { addNewProductToMenu, updateProductInMenu, deleteProductFromMenu };
