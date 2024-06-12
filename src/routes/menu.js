@@ -13,14 +13,14 @@ menuRouter.get("/", (req, res) => {
 
 // "POST"/menu Lägger till en ny produkt i menyn
 
-menuRouter.post("/", validateProduct, addNewProductToMenu);
+menuRouter.post("/products", validateProduct, addNewProductToMenu);
 
 // "PUT"/menu/:id Uppdaterar en produkt i menyn
 
-menuRouter.put("/:id", validateProduct, updateProductInMenu);
+menuRouter.put("/products/:id", validateProduct, updateProductInMenu);
 
 // "DELETE"/menu/:id Tar bort en produkt från menyn
 
-menuRouter.delete("/:id", deleteProductFromMenu);
+menuRouter.delete("/products/:id", deleteProductFromMenu);
 
   export default menuRouter;
