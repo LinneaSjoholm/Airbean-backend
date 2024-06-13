@@ -35,8 +35,24 @@ URL: /about
 Method: GET
 Description: This endpoint returns information about the company.
 
-
 ### 3.
+URL: /cart
+method: POST
+Description: this endpoint allow a user to add an item to their cart.
+
+URL: /cart
+method: GET
+Description: this endpoint returns the current contents of the cart along with the total price.
+
+URL: /cart/:id
+method: DELETE
+Description: This endpoint allows a user to remove an item from their cart by specifying the item's ID in the URL.
+
+### 4.
+URL: /order/guest
+Method: POST
+Description: This endpoint allows guests to create a new order.
+
 URL: /order
 Method: POST
 Header: Authorization: Bearer <token>
@@ -51,7 +67,7 @@ Method: GET
 Description: This endpoint shows the status of a specific order.
 
 
-### 4.
+### 5.
 /user
 
 URL: /user/register
@@ -66,21 +82,32 @@ URL: /user/logout
 Method: POST
 Description: This endpoint allows a user to log out.
 
+### 6.
+/admin
 
-### 5.
-URL: /cart
-method: POST
-Description: this endpoint allow a user to add an item to their cart.
+URL: /admin/login
+Method: POST
+Description: This endpoint allows admin to log in.
 
-URL: /cart
-method: GET
-Description: this endpoint returns the current contents of the cart along with the total price.
+URL: /admin/products
+Method: POST
+Description: This endpoint allows admin to add new product to menu.
 
-URL: /cart/:id
-method: DELETE
-Description: This endpoint allows a user to remove an item from their cart by specifying the item's ID in the URL.
+URL: /admin/products/:id
+Method: PUT
+Description: This endpoint allows admin to modify a product on the menu.
 
+URL: /admin/products/:id
+Method: DELETE
+Description: This endpoint allows admin to remove a product from menu.
 
+URL: /admin/campaign
+Method: POST
+Description: This endpoint enables administrators to add a campaign offer.
+
+URL: /admin/logout
+Method: POST
+Description: This endpoint allows admin to log out.
 
 
 ### Security
