@@ -39,16 +39,16 @@ URL: /about
 URL: /user/register
 - Method: POST
 - Description: This endpoint allows a new user to register.
-- Example Request:
-  ```json
-  {
-    "username": "newuser",
-    "password": "password123"
-  }
 
 URL: /user/login
 - Method: POST
 - Description: This endpoint allows a user to log in.
+- Example user:
+  ```json
+  {
+    "username": "TestUser1",
+    "password": "12345"
+  }
 
 URL: /user/logout
 - Method: POST
@@ -58,6 +58,12 @@ URL: /user/logout
 URL: /cart
 - Method: POST
 - Description: this endpoint allow a user to add an item to their cart.
+- Example Request:
+  ```json
+	{
+		"title": "Latte Macchiato",
+		"price": 49
+	}
 
 URL: /cart
 - Method: GET
@@ -80,6 +86,13 @@ URL: /order
 URL: /order/user/:userId
 - Method: GET
 - Description: This endpoint shows a list of all your orders, and the total sum.
+- Example TestUser1 URL:
+  ```json
+	{
+		(http://localhost:8000/order/user/sQTbJAkwIjruQ25S)
+	}
+
+URL: 
 
 URL: /order/:orderId
 - Method: GET
