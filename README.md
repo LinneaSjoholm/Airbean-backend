@@ -123,36 +123,97 @@ GET http://localhost:8000/order/:orderId
 	}
 
 ### 6. Admin Authentication
-URL: /admin/login
-- Method: POST
+POST http://localhost:8000/admin/login
 - Description: This endpoint allows admin to log in.
 
-URL: /admin/logout
-- Method: POST
+POST http://localhost:8000/admin/logout
 - Description: This endpoint allows admin to log out.
 
 ### 7. Admin Product Management
-URL: /admin/products
-- Method: POST
+POST http://localhost:8000/admin/products
 - Header: Authorization: Bearer (token)
 - Description: This endpoint allows admin to add new product to menu.
+- Example Request in body:
+  ```json
+	{
+	"title" : "Matcha Latte",
+	"desc" : "Sött, lent grönt te",
+	"price" : "59"
+  }
 
-URL: /admin/products/:id
-- Method: PUT
+- Example Response:
+  ```json
+  {
+	"message": "Product added successfully",
+	"newProduct": {
+		"id": 7,
+		"title": "Matcha Latte",
+		"desc": "Sött, lent grönt te",
+		"price": 59,
+		"createdAt": "2024-06-13T13:23:57.210Z"
+	}
+   }
+
+PUT http://localhost:8000/admin/products/:id
 - Header: Authorization: Bearer (token)
 - Description: This endpoint allows admin to modify a product on the menu.
+- Example Request in body:
+  ```json
+  {
+		"title": "Cortado",
+		"desc": "Bryggd på månadens bönor.",
+		"price": 49
+  }
 
-URL: /admin/products/:id
-- Method: DELETE
+- Example Response:
+  ```json
+  {
+	"message": "Product updated successfully",
+	"product": {
+		"id": 6,
+		"title": "Cortado",
+		"desc": "Bryggd på månadens bönor.",
+		"price": 49,
+		"preptime": 5,
+		"modifiedAt": "2024-06-13T18:28:38.410Z"
+	}
+  }
+
+- Example with incorrect token, 401 Unauthorized:
+  ```json
+  {
+	"error": "Access denied. Only administrators can perform this action."
+  }
+
+DELETE http://localhost:8000/admin/products/:id
 - Header: Authorization: Bearer (token)
 - Description: This endpoint allows admin to remove a product from menu.
 
 ### 8. Admin Campaign Management
-URL: /admin/campaign
-- Method: POST
+POST http://localhost:8000/admin/campaign
 - Header: Authorization: Bearer (token)
 - Description: This endpoint enables administrators to add a campaign offer.
+- Example Response, 400 Bad Request:
+  ```json
+  {
+	"error": "All fields are required"
+  }
+- Example Request in body:
+  ```json
+  {
+	"title": "Cortado",
+	"desc" : "Njut av en god Cortado med en bit Budapest för endast 50 kr",
+	"discount" : "50%"
+  }
 
+- Example Response:
+  ```json
+  {
+	"message": "Campaign added successfully",
+	"title": "Cortado",
+	"desc": "Njut av en god Cortado med en bit Budapest för endast 50 kr",
+	"discount": "50%"
+}
 
 
 ### Security
