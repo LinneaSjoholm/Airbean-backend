@@ -120,7 +120,7 @@ GET http://localhost:8000/order/user/:userId
 		  "userId": "sQTbJAkwIjruQ25S",
 	          "_id": "poFMf9bISn3d5O3Z"  // This is the :orderId
 		}
-	       ]
+	   ]
   }
   
 GET http://localhost:8000/order/:orderId
