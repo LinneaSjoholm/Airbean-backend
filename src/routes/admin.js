@@ -1,8 +1,11 @@
 import { Router } from 'express';
 import { loginAdmin } from '../services/adminService.js';
-import { addNewProductToMenu, updateProductInMenu, deleteProductFromMenu } from "../services/menuService.js";
-import { validateProduct } from "../middleware/validateProduct.js";
 import { authenticateAdminToken } from '../middleware/adminAuth.js';
+
+import { addNewProductToMenu, updateProductInMenu, deleteProductFromMenu } from "../services/productService.js";
+import { validateProduct } from "../middleware/validateProduct.js";
+import { addCampaignOffer } from '../services/campaignService.js';
+import { validateCampaign } from '../middleware/validateCampaign.js';
 
 const adminRouter = Router();
 
@@ -17,6 +20,9 @@ adminRouter.put("/products/:id", authenticateAdminToken, validateProduct, update
 
 // "DELETE"/admin/:id Tar bort en produkt från menyn
 adminRouter.delete("/products/:id", authenticateAdminToken, deleteProductFromMenu);
+
+// "POST" /admin/campaign för att lägga till en kampanj
+adminRouter.post("/campaign", authenticateAdminToken, validateCampaign, addCampaignOffer);
 
 // "POST" /admin/logout för att logga ut en admin
 adminRouter.post("/logout", (req, res) => {
