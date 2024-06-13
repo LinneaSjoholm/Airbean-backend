@@ -70,13 +70,13 @@ GET http://localhost:8000/cart
   {
 	"cart": [
 		{
-			"title": "Caffè Doppio",
-			"price": 49,
-			"preptime": 7,
-			"_id": "KB5FaNAjQhzxvHPs" // This is :id
+		 "title": "Caffè Doppio",
+		 "price": 49,
+		 "preptime": 7,
+		 "_id": "KB5FaNAjQhzxvHPs" // This is :id
 		}
 	],
-	"totalPrice": 49
+	   "totalPrice": 49
   }
 
 
