@@ -31,7 +31,11 @@ URL: /menu
 
 
 ### 2. About
-URL: /about
+- URL:
+  ```json
+  {
+    (http://localhost:8000/about)
+  }
 - Method: GET
 - Description: This endpoint returns information about the company.
 
