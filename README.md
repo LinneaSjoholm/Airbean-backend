@@ -25,52 +25,44 @@ http://localhost:8000
 ## Endpoints:
 
 ### 1. Menu
-URL: /menu
-- Method: GET
+GET http://localhost:8000/menu
 - Description: This endpoint returns the entire menu.
 
 
 ### 2. About
-- POST http://localhost:8000/about
-- Method: GET
+GET http://localhost:8000/about
 - Description: This endpoint returns information about the company.
 
 ### 3. User Registration and Authentication
-URL: /user/register
-- Method: POST
+POST http://localhost:8000/user/register
 - Description: This endpoint allows a new user to register.
 
-URL: /user/login
-- Method: POST
+POST http://localhost:8000/user/login
 - Description: This endpoint allows a user to log in.
-- Example user:
+- Example of an already existing user to put in body:
   ```json
   {
     "username": "TestUser1",
     "password": "12345"
   }
 
-URL: /user/logout
-- Method: POST
+POST http://localhost:8000/user/logout
 - Description: This endpoint allows a user to log out.
 
 ### 4. Cart Management
-URL: /cart
-- Method: POST
+POST http://localhost:8000/cart
 - Description: this endpoint allow a user to add an item to their cart.
-- Example Request:
+- Example Request in body:
   ```json
 	{
 		"title": "Latte Macchiato",
 		"price": 49
 	}
 
-URL: /cart
-- Method: GET
+GET http://localhost:8000/cart
 - Description: this endpoint returns the current contents of the cart along with the total price.
 
-URL: /cart/:id
-- Method: DELETE
+DELETE http://localhost:8000/cart/:id
 - Description: This endpoint allows a user to remove an item from their cart by specifying the item's ID in the URL.
 
 ### 5. Order Management
@@ -78,13 +70,11 @@ URL: /order/guest
 - Method: POST
 - Description: This endpoint allows guests to create a new order.
 
-URL: /order
-- Method: POST
+POST http://localhost:8000/order
 - Header: Authorization: Bearer <token>
 - Description: This endpoint allows authenticated users to create a new order.
 
-URL: /order/user/:userId
-- Method: GET
+GET http://localhost:8000/order/user/:userId
 - Description: This endpoint shows a list of all your orders, and the total sum.
 - Example TestUser1 URL:
   ```json
@@ -92,11 +82,28 @@ URL: /order/user/:userId
 		(http://localhost:8000/order/user/sQTbJAkwIjruQ25S)
 	}
 
-URL: 
-
-URL: /order/:orderId
-- Method: GET
+GET http://localhost:8000/order/:orderId
 - Description: This endpoint shows the status of a specific order.
+- Example Response:
+  ```json
+	{
+	"orderWithDeliveryStatus": {
+		"items": [
+			{
+				"title": "Caffè Doppio",
+				"price": 49,
+				"preptime": 7,
+				"_id": "cwO52IbeYWOGy6oh"
+			}
+		],
+		"totalPrice": 49,
+		"deliveryTime": "2024-06-13T16:06:15.693Z",
+		"createdAt": "2024-06-13T15:59:15.693Z",
+		"userId": "sQTbJAkwIjruQ25S",
+		"_id": "poFMf9bISn3d5O3Z",  // This is the :orderId
+		"isDelivered": false,
+		"timeLeft": "4 minutes and 2 seconds"
+	}
 
 ### 6. Admin Authentication
 URL: /admin/login
