@@ -24,20 +24,18 @@ http://localhost:8000
 
 ## Endpoints:
 
-### 1.
+### 1. Menu
 URL: /menu
 - Method: GET
 - Description: This endpoint returns the entire menu.
 
 
-### 2.
+### 2. About
 URL: /about
 - Method: GET
 - Description: This endpoint returns information about the company.
 
-### 3.
-/user
-
+### 3. User Registration and Authentication
 URL: /user/register
 - Method: POST
 - Description: This endpoint allows a new user to register.
@@ -50,7 +48,7 @@ URL: /user/logout
 - Method: POST
 - Description: This endpoint allows a user to log out.
 
-### 4.
+### 4. Cart Management
 URL: /cart
 - Method: POST
 - Description: this endpoint allow a user to add an item to their cart.
@@ -63,7 +61,7 @@ URL: /cart/:id
 - Method: DELETE
 - Description: This endpoint allows a user to remove an item from their cart by specifying the item's ID in the URL.
 
-### 5.
+### 5. Order Management
 URL: /order/guest
 - Method: POST
 - Description: This endpoint allows guests to create a new order.
@@ -81,13 +79,16 @@ URL: /order/:orderId
 - Method: GET
 - Description: This endpoint shows the status of a specific order.
 
-### 6.
-/admin
-
+### 6. Admin Authentication
 URL: /admin/login
 - Method: POST
 - Description: This endpoint allows admin to log in.
 
+URL: /admin/logout
+- Method: POST
+- Description: This endpoint allows admin to log out.
+
+### 7. Admin Product Management
 URL: /admin/products
 - Method: POST
 - Header: Authorization: Bearer <token>
@@ -103,14 +104,12 @@ URL: /admin/products/:id
 - Header: Authorization: Bearer <token>
 - Description: This endpoint allows admin to remove a product from menu.
 
+### 8. Admin Campaign Management
 URL: /admin/campaign
 - Method: POST
 - Header: Authorization: Bearer <token>
 - Description: This endpoint enables administrators to add a campaign offer.
 
-URL: /admin/logout
-- Method: POST
-- Description: This endpoint allows admin to log out.
 
 
 ### Security
