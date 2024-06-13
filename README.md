@@ -39,13 +39,13 @@ URL: /about
 URL: /user/register
 - Method: POST
 - Description: This endpoint allows a new user to register.
-
-Host: example.com
-Content-Type: application/json
-{
-  "username": "newuser",
-  "password": "password123"
-}
+- Example Request:
+  ```json
+  {
+    "username": "newuser",
+    "password": "password123",
+    "email": "newuser@example.com"
+  }
 
 URL: /user/login
 - Method: POST
