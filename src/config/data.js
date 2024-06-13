@@ -46,7 +46,7 @@ let menu = [
 const companyInfo = [
   {
     title: 'Air Bean',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae condimentum neque. Suspendisse nec sollicitudin orci, vel tristique nisl. Ut in diam id odio efficitur laoreet. Sed sed massa consequat, malesuada neque eu, placerat orci. Nam molestie, enim eget malesuada finibus, tellus sem efficitur tortor, eget maximus erat lacus in.',
+    desc: 'Airbean är en innovativ webbapplikation som specialiserar sig på att leverera kaffe med drönarteknik. Med fokus på bekvämlighet och snabbhet erbjuder vi användarna möjligheten att beställa sina favoritdrycker från deras webbläsare eller mobila enhet och få dem levererade direkt till deras plats via specialdesignade leveransdrönare.'
   },
 ];
 

@@ -1,5 +1,7 @@
 import nedb from 'nedb-promises';
 
+// Skapa en databas för meny, kundvagn, ordrar, användare och kampanjer
+
 const menuDb = new nedb({ filename: 'menu.db', autoload: true });
 const cartDb = new nedb({ filename: 'cart.db', autoload: true });
 const orderDb = new nedb({ filename: 'orders.db', autoload: true });

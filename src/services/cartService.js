@@ -11,7 +11,6 @@ async function addToCart(req, res) {
   if (!product) {
     return res.status(400).json({ error: 'Product not found' });
   }
-
   if (product.price !== price) {
     return res.status(400).json({ error: 'Invalid price' });
   }
@@ -39,11 +38,11 @@ async function addToCart(req, res) {
 
 // Funktion för att visa kundvagnen
 async function viewCart(req, res) {
-
-  // Försök att hämta alla ordrar från databasen {cart.db}
   try {
+    // Försök att hämta alla ordrar från databasen {cart.db}
     const cart = await cartDb.find({});
 
+    // Räkna ut totalpriset för alla ordrar
     const totalPrice = cart.reduce((total, order) => total + order.price, 0);
 
     res.status(200).json({ cart, totalPrice });
@@ -58,11 +57,10 @@ async function removeFromCart(req, res) {
   // Försök att hitta ordern i databasen {cart.db}
   try {
     const order = await cartDb.findOne({ _id: req.params.id });
-
     if (!order) {
       return res.status(404).json({ message: 'Order not found' });
     }
-
+    
     // Försök att ta bort ordern från databasen {cart.db}
     await cartDb.remove({ _id: req.params.id });
 

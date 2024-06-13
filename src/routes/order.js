@@ -12,7 +12,6 @@ import { authenticateToken } from '../middleware/authToken.js';
 const orderRouter = Router();
 
 // "POST" /order genomför beställning
-
 orderRouter.post('/', authenticateToken, createOrder);
 
 // "POST" /order/guest

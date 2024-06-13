@@ -14,8 +14,7 @@ function validateCampaign ( req, res, next) {
         return res.status(400).json({ error: "Discount must be a positive number" });
     }
 
-    req.body.discount = discountNumber;
-    // Om valideringen lyckas, gå vidare till nästa middleware eller route handler
+    req.body.discount = discountNumber; 
     next();
 };
 

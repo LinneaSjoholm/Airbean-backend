@@ -8,7 +8,7 @@ const ADMIN_SECRET_KEY = process.env.ADMIN_SECRET_KEY;
 // Funktion för att autentisera en administratör
 function authenticateAdminToken(req, res, next) {
 
-    // Hämta token från Authorization-header
+// Hämta token från Authorization-header
     const token = req.header('Authorization')?.split(' ')[1];
     if(!token) {
         return res.status(401).json({ error: 'Access denied. Only administrators can perform this action.' });

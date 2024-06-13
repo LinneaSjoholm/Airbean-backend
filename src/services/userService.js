@@ -2,23 +2,24 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { userDb } from '../config/db.js';
-import dotenv from 'dotenv';
 
-// Hämtar USER_SECRET_KEY från .env-filen
-dotenv.config();
-const USER_SECRET_KEY = process.env.USER_SECRET_KEY;
 
 // Funktion för att registrera en ny användare
 async function registerUser(req, res) {
   const { username, password } = req.body;
 
   try {
+    // Kolla om användaren redan finns i databasen {user.db}
+    const existingUser = await userDb.findOne({ username });
+    if (existingUser) {
+      return res.status(400).json({ error: "Username already exists" });
+    }
 
-    // Kolla om användaren redan finns
+    // Hasha lösenordet
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = { username, password: hashedPassword };
 
-    // Lägg till användaren i databasen {users.db}
+    // Lägg till användaren i databasen {user.db}
     const newUser = await userDb.insert(user);
   
     res.status(201).json(newUser);
@@ -26,32 +27,32 @@ async function registerUser(req, res) {
    
     res.status(400).json({ error: "Failed to register user" });
   }
-}
+};
+
+const SECRET_KEY = 'your-secret-key'; 
 
 // Funktion för att logga in en användare
 async function loginUser(req, res) {
   const { username, password } = req.body;
 
-  // Kolla om användarnamn och lösenord är ifyllda
+  // Kontrollera att användarnamn och lösenord finns
   if (!username || !password) {
     return res
       .status(400)
       .json({ error: "Username and password are required" });
   }
 
-  // Kolla om användaren finns i databasen {users.db}
   try {
     const user = await userDb.findOne({ username });
 
-  // Om användaren inte finns eller om lösenordet inte stämmer, skicka en 400-status och ett felmeddelande
+    // Kontrollera om användaren finns och om lösenordet stämmer
     if (!user || !bcrypt.compareSync(password, user.password)) {
       return res.status(400).json({ error: 'Invalid username or password' });
     }
-
-  // Skapa en token
+    // Skapa en token
     const token = jwt.sign(
       { id: user._id, username: user.username },
-      USER_SECRET_KEY,
+      SECRET_KEY,
       { expiresIn: '1h' }
     );
 

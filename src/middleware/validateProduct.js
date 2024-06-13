@@ -13,9 +13,8 @@ function validateProduct ( req, res, next) {
     if (isNaN(priceNumber) || priceNumber <= 0) {
         return res.status(400).json({ error: "Price must be a positive number" });
     }
-    // Spara det validerade priset i req.body
+    
     req.body.price = priceNumber;
-    // Om valideringen lyckas, gå vidare till nästa middleware eller route handler
     next();
 };
 

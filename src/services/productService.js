@@ -19,6 +19,7 @@ async function addNewProductToMenu (req, res) {
         id: menu.length > 0 ? menu[menu.length - 1].id + 1 : 1,
         title,
         desc,
+        preptime: product.preptime,
         price: priceNumber,
         createdAt: new Date(),
     };

@@ -4,7 +4,8 @@ import { orderDb } from "../config/db.js";
 async function getOrderById(req, res) {
   try {
     const orderId = req.params.orderId;
-
+    
+    // Hämta ordern från databasen {order.db}
     const order = await orderDb.findOne({ _id: orderId });
 
     // Skapa en variabel för att hålla koll på om ordern är levererad
