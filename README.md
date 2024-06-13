@@ -102,25 +102,24 @@ GET http://localhost:8000/order/user/:userId
 - Example Response:
   ```json
   {
-	"orderCount": 1,
-	"orders": [
+   "orderCount": 1,
+    "orders": [
+	      {
+		"items": [
 		{
-		{
-			"items": [
-				{
-					"title": "Caffè Doppio",
-					"price": 49,
-					"preptime": 7,
-					"_id": "cwO52IbeYWOGy6oh"
-				}
-			],
-			"totalPrice": 49,
-			"deliveryTime": "2024-06-13T16:06:15.693Z",
-			"createdAt": "2024-06-13T15:59:15.693Z",
-			"userId": "sQTbJAkwIjruQ25S",
-			"_id": "poFMf9bISn3d5O3Z"  // This is the :orderId
+		  "title": "Caffè Doppio",
+		  "price": 49,
+		  "preptime": 7,
+		  "_id": "cwO52IbeYWOGy6oh"
 		}
-	     ]
+		],
+		  "totalPrice": 49,
+		  "deliveryTime": "2024-06-13T16:06:15.693Z",
+		  "createdAt": "2024-06-13T15:59:15.693Z",
+		  "userId": "sQTbJAkwIjruQ25S",
+	          "_id": "poFMf9bISn3d5O3Z"  // This is the :orderId
+		}
+	       ]
   }
   
 GET http://localhost:8000/order/:orderId
