@@ -36,37 +36,6 @@ URL: /about
 - Description: This endpoint returns information about the company.
 
 ### 3.
-URL: /cart
-- Method: POST
-- Description: this endpoint allow a user to add an item to their cart.
-
-URL: /cart
-- Method: GET
-- Description: this endpoint returns the current contents of the cart along with the total price.
-
-URL: /cart/:id
-- Method: DELETE
-- Description: This endpoint allows a user to remove an item from their cart by specifying the item's ID in the URL.
-
-### 4.
-URL: /order/guest
-- Method: POST
-- Description: This endpoint allows guests to create a new order.
-
-URL: /order
-- Method: POST
-- Header: Authorization: Bearer <token>
-- Description: This endpoint allows authenticated users to create a new order.
-
-URL: /order/user/:userId
-- Method: GET
-- Description: This endpoint shows a list of all your orders, and the total sum.
-
-URL: /order/:orderId
-- Method: GET
-- Description: This endpoint shows the status of a specific order.
-
-### 5.
 /user
 
 URL: /user/register
@@ -80,6 +49,37 @@ URL: /user/login
 URL: /user/logout
 - Method: POST
 - Description: This endpoint allows a user to log out.
+
+### 4.
+URL: /cart
+- Method: POST
+- Description: this endpoint allow a user to add an item to their cart.
+
+URL: /cart
+- Method: GET
+- Description: this endpoint returns the current contents of the cart along with the total price.
+
+URL: /cart/:id
+- Method: DELETE
+- Description: This endpoint allows a user to remove an item from their cart by specifying the item's ID in the URL.
+
+### 5.
+URL: /order/guest
+- Method: POST
+- Description: This endpoint allows guests to create a new order.
+
+URL: /order (if you are a user)
+- Method: POST
+- Header: Authorization: Bearer <token>
+- Description: This endpoint allows authenticated users to create a new order.
+
+URL: /order/user/:userId
+- Method: GET
+- Description: This endpoint shows a list of all your orders, and the total sum.
+
+URL: /order/:orderId
+- Method: GET
+- Description: This endpoint shows the status of a specific order.
 
 ### 6.
 /admin
