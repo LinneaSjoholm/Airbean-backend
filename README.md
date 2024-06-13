@@ -136,7 +136,7 @@ POST http://localhost:8000/admin/login
 	"password" : "admin1234"
   }
 
-- Incorrect username or password, Response, 404 Not found:
+- Incorrect username or password, Response 404 Not found:
   ```json
   {
 	"message": "Invalid username or password"
@@ -240,7 +240,7 @@ POST http://localhost:8000/admin/campaign
 	"title": "Cortado",
 	"desc": "Njut av en god Cortado med en bit Budapest för endast 50 kr",
 	"discount": "50%"
-}
+  }
 
 
 ### Security
