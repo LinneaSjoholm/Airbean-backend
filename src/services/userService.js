@@ -2,6 +2,10 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { userDb } from '../config/db.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 
 
 // Funktion för att registrera en ny användare
@@ -23,7 +27,7 @@ async function registerUser(req, res) {
 }
 
 
-const SECRET_KEY = 'your-secret-key'; 
+const USER_SECRET_KEY = process.env.USER_SECRET_KEY;
 
 
 async function loginUser(req, res) {
@@ -45,7 +49,7 @@ async function loginUser(req, res) {
 
     const token = jwt.sign(
       { id: user._id, username: user.username },
-      SECRET_KEY,
+      USER_SECRET_KEY,
       { expiresIn: '1h' }
     );
 
