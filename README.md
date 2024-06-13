@@ -204,6 +204,12 @@ PUT http://localhost:8000/admin/products/:id
 DELETE http://localhost:8000/admin/products/:id
 - Header: Authorization: Bearer (token)
 - Description: This endpoint allows admin to remove a product from menu.
+- Response:
+  ```json
+  {
+  	"message": "Product removed successfully",
+	"updatedMenu": [...]
+  }
 
 ### 8. Admin Campaign Management
 POST http://localhost:8000/admin/campaign
