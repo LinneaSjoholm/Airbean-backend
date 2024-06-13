@@ -207,8 +207,8 @@ DELETE http://localhost:8000/admin/products/:id
 - Response:
   ```json
   {
-  	"message": "Product removed successfully",
-	"updatedMenu": [...]
+     "message": "Product removed successfully",
+     "updatedMenu": [...]
   }
 
 ### 8. Admin Campaign Management
