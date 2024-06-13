@@ -36,7 +36,7 @@ URL: /about
 - Description: This endpoint returns information about the company.
 
 ### 3.
-/user
+/user (if you want to create a user)
 
 URL: /user/register
 - Method: POST
