@@ -28,7 +28,6 @@ http://localhost:8000
 GET http://localhost:8000/menu
 - Description: This endpoint returns the entire menu.
 
-
 ### 2. About
 GET http://localhost:8000/about
 - Description: This endpoint returns information about the company.
@@ -36,6 +35,11 @@ GET http://localhost:8000/about
 ### 3. User Registration and Authentication
 POST http://localhost:8000/user/register
 - Description: This endpoint allows a new user to register.
+- Example Response 400 Bad Request:
+  ```json
+  {
+    "error": "Username already exists"
+  }
 
 POST http://localhost:8000/user/login
 - Description: This endpoint allows a user to log in.
@@ -61,13 +65,26 @@ POST http://localhost:8000/cart
 
 GET http://localhost:8000/cart
 - Description: this endpoint returns the current contents of the cart along with the total price.
+- Example Response:
+  ```json
+  {
+	"cart": [
+		{
+			"title": "Caffè Doppio",
+			"price": 49,
+			"preptime": 7,
+			"_id": "KB5FaNAjQhzxvHPs"
+		}
+	],
+	"totalPrice": 49
+  }
+
 
 DELETE http://localhost:8000/cart/:id
 - Description: This endpoint allows a user to remove an item from their cart by specifying the item's ID in the URL.
 
 ### 5. Order Management
-URL: /order/guest
-- Method: POST
+POST http://localhost:8000/order/guest
 - Description: This endpoint allows guests to create a new order.
 
 POST http://localhost:8000/order
