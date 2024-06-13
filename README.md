@@ -210,6 +210,11 @@ DELETE http://localhost:8000/admin/products/:id
      "message": "Product removed successfully",
      "updatedMenu": [...]
   }
+- Response when trying to delete product that don't exist, 404 Not Found:
+  ```json
+  {
+	"message": "Product not found"
+  }
 
 ### 8. Admin Campaign Management
 POST http://localhost:8000/admin/campaign
