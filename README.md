@@ -40,10 +40,8 @@ URL: /user/register
 - Method: POST
 - Description: This endpoint allows a new user to register.
 
-- POST /user/register HTTP/1.1
 Host: example.com
 Content-Type: application/json
-
 {
   "username": "newuser",
   "password": "password123"
