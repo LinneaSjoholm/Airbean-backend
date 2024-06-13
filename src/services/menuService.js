@@ -6,14 +6,19 @@ async function addNewProductToMenu (req, res) {
 
     // Hämta produktens titel, beskrivning och pris från request body
    const { title, desc, price } = req.body;
-   
+
+   const priceNumber = parseFloat(price);
+   if (isNaN(priceNumber) || priceNumber <= 0) {
+       return res.status(400).json({ error: "Price must be a positive number" });
+   }
+
    // Kolla om produkten redan finns i menyn
    try {
     const newProduct = {
         id: menu.length > 0 ? menu[menu.length - 1].id + 1 : 1,
         title,
         desc,
-        price,
+        price: priceNumber,
         createdAt: new Date(),
     };
 
@@ -34,6 +39,11 @@ async function updateProductInMenu (req, res) {
     const { title, desc, price } = req.body;
     const productId = parseInt(req.params.id);
 
+    let priceNumber = parseFloat(price);
+    if (price && (isNaN(priceNumber) || priceNumber <= 0)) {
+        return res.status(400).json({ error: "Price must be a positive number" });
+    }
+
     // Hitta indexet för produkten i menyn
     const productIndex = menu.findIndex(item => item.id === productId);
     if(productIndex === -1) {
@@ -45,7 +55,7 @@ async function updateProductInMenu (req, res) {
     // Uppdatera produktens titel, beskrivning och pris om det finns i request body
     product.title = title || product.title;
     product.desc = desc || product.desc;
-    product.price = price || product.price;
+    product.price = price ? priceNumber : product.price;
     product.modifiedAt = new Date();
 
     // Uppdatera produkten i menyn
