@@ -129,6 +129,12 @@ GET http://localhost:8000/order/:orderId
 ### 6. Admin Authentication
 POST http://localhost:8000/admin/login
 - Description: This endpoint allows admin to log in.
+- Request in body
+  ```json
+  {
+	"username" : "admin",
+	"password" : "admin1234"
+  }
 
 POST http://localhost:8000/admin/logout
 - Description: This endpoint allows admin to log out.
