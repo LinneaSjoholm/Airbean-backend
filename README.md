@@ -88,7 +88,7 @@ POST http://localhost:8000/order/guest
 - Description: This endpoint allows guests to create a new order.
 
 POST http://localhost:8000/order
-- Header: Authorization: Bearer <token>
+- Header: Authorization: Bearer (token)
 - Description: This endpoint allows authenticated users to create a new order.
 
 GET http://localhost:8000/order/user/:userId
@@ -134,23 +134,23 @@ URL: /admin/logout
 ### 7. Admin Product Management
 URL: /admin/products
 - Method: POST
-- Header: Authorization: Bearer <token>
+- Header: Authorization: Bearer (token)
 - Description: This endpoint allows admin to add new product to menu.
 
 URL: /admin/products/:id
 - Method: PUT
-- Header: Authorization: Bearer <token>
+- Header: Authorization: Bearer (token)
 - Description: This endpoint allows admin to modify a product on the menu.
 
 URL: /admin/products/:id
 - Method: DELETE
-- Header: Authorization: Bearer <token>
+- Header: Authorization: Bearer (token)
 - Description: This endpoint allows admin to remove a product from menu.
 
 ### 8. Admin Campaign Management
 URL: /admin/campaign
 - Method: POST
-- Header: Authorization: Bearer <token>
+- Header: Authorization: Bearer (token)
 - Description: This endpoint enables administrators to add a campaign offer.
 
 
