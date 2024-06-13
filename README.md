@@ -68,7 +68,7 @@ URL: /order/guest
 - Method: POST
 - Description: This endpoint allows guests to create a new order.
 
-URL: /order (if you are a user)
+URL: /order
 - Method: POST
 - Header: Authorization: Bearer <token>
 - Description: This endpoint allows authenticated users to create a new order.
