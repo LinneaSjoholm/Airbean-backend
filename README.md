@@ -93,7 +93,7 @@ POST http://localhost:8000/order
 
 GET http://localhost:8000/order/user/:userId
 - Description: This endpoint shows a list of all your orders, and the total sum.
-- Example TestUser1 URL:
+- Example to show TestUser1's list of orders:
   ```json
 	{
 		(http://localhost:8000/order/user/sQTbJAkwIjruQ25S)
