@@ -43,8 +43,7 @@ URL: /user/register
   ```json
   {
     "username": "newuser",
-    "password": "password123",
-    "email": "newuser@example.com"
+    "password": "password123"
   }
 
 URL: /user/login
