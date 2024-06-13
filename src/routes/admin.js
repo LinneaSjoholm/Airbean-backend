@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { loginAdmin } from '../services/adminService.js';
 import { addNewProductToMenu, updateProductInMenu, deleteProductFromMenu } from "../services/menuService.js";
 import { validateProduct } from "../middleware/validateProduct.js";
+import { authenticateAdminToken } from '../middleware/adminAuth.js';
 
 const adminRouter = Router();
 
@@ -9,17 +10,16 @@ const adminRouter = Router();
 adminRouter.post("/login", loginAdmin);
 
 // "POST"/admin Lägger till en ny produkt i menyn
-adminRouter.post("/products", validateProduct, addNewProductToMenu);
+adminRouter.post("/products", authenticateAdminToken, validateProduct, addNewProductToMenu);
 
 // "PUT"/admin Uppdaterar en produkt i menyn
-adminRouter.put("/products/:id", validateProduct, updateProductInMenu);
+adminRouter.put("/products/:id", authenticateAdminToken, validateProduct, updateProductInMenu);
 
 // "DELETE"/admin/:id Tar bort en produkt från menyn
-adminRouter.delete("/products/:id", deleteProductFromMenu);
+adminRouter.delete("/products/:id", authenticateAdminToken, deleteProductFromMenu);
 
 // "POST" /admin/logout för att logga ut en admin
 adminRouter.post("/logout", (req, res) => {
-    global.currentUser = null;
     res.status(200).json({ message: "Logged out successfully" });
 });
 
