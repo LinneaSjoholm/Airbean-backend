@@ -15,9 +15,8 @@ const orderRouter = Router();
 
 orderRouter.post('/', authenticateToken, createOrder);
 
-//Post /order/guest
+// "POST" /order/guest
 orderRouter.post('/guest', createguestOrder);
-
 
 // "GET" /order visar alla ordrar och total summa
 orderRouter.get('/user/:userId', getUserOrders);

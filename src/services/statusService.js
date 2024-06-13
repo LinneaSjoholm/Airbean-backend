@@ -1,16 +1,18 @@
 import { orderDb } from "../config/db.js";
 
-//Hämta orderinfo om specifik order
+// Funktion för att hämta orderinfo om specifik order
 async function getOrderById(req, res) {
   try {
     const orderId = req.params.orderId;
 
     const order = await orderDb.findOne({ _id: orderId });
 
+    // Skapa en variabel för att hålla koll på om ordern är levererad
     const currentTime = new Date();
     const deliveryTime = new Date(order.deliveryTime);
     const isDelivered = deliveryTime <= currentTime;
 
+    // Skapa en variabel för att hålla koll på tiden kvar till leverans
     let timeLeft = null;
     if (!isDelivered) {
       const timeDiff = deliveryTime - currentTime;
@@ -20,6 +22,7 @@ async function getOrderById(req, res) {
       timeLeft = `${minutesLeft} minutes and ${secondsLeft} seconds`;
     }
 
+    // Skapa ett objekt med orderns information och leveransstatus
     const orderWithDeliveryStatus = {
       ...order,
       isDelivered,
@@ -30,6 +33,6 @@ async function getOrderById(req, res) {
   } catch (error) {
     res.status(400).json({ error: "Failed to get users orders" });
   }
-}
+};
 
 export { getOrderById };

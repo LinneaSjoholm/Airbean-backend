@@ -7,6 +7,7 @@ async function addNewProductToMenu (req, res) {
     // Hämta produktens titel, beskrivning och pris från request body
    const { title, desc, price } = req.body;
 
+   // Kontrollera prisets värde
    const priceNumber = parseFloat(price);
    if (isNaN(priceNumber) || priceNumber <= 0) {
        return res.status(400).json({ error: "Price must be a positive number" });
@@ -25,6 +26,7 @@ async function addNewProductToMenu (req, res) {
     // Lägg till produkten i menyn
     menu.push(newProduct);
     await menuDb.insert(newProduct);
+
     // Skicka svar till klienten
     res.status(201).json({message: 'Product added successfully' , newProduct});
    } catch (error) {
@@ -35,10 +37,12 @@ async function addNewProductToMenu (req, res) {
 // Funktion för att uppdatera en produkt i menyn
 async function updateProductInMenu (req, res) {
     try {
+
     // Hämta produktens id från URL:en
     const { title, desc, price } = req.body;
     const productId = parseInt(req.params.id);
 
+    // Kontrollera att priset är ett positivt nummer
     let priceNumber = parseFloat(price);
     if (price && (isNaN(priceNumber) || priceNumber <= 0)) {
         return res.status(400).json({ error: "Price must be a positive number" });
@@ -49,13 +53,14 @@ async function updateProductInMenu (req, res) {
     if(productIndex === -1) {
         return res.status(404).json({ message: 'Product not found' });
     }
+
     // Hämta produkten från menyn
     let product = menu[productIndex];
 
     // Uppdatera produktens titel, beskrivning och pris om det finns i request body
     product.title = title || product.title;
     product.desc = desc || product.desc;
-    product.price = price ? priceNumber : product.price;
+    product.price = price ? priceNumber : product.price; // 
     product.modifiedAt = new Date();
 
     // Uppdatera produkten i menyn
@@ -63,6 +68,7 @@ async function updateProductInMenu (req, res) {
 
     // Uppdatera produkten i databasen
     await menuDb.update({ _id: req.params.id }, { $set: product });
+
     // Skicka svar till klienten
     res.status(200).json({ message: 'Product updated successfully', product });
         } catch (error) {
@@ -74,6 +80,7 @@ async function updateProductInMenu (req, res) {
 // Funktion för att ta bort en produkt från menyn
 async function deleteProductFromMenu (req, res) {
     try {
+        
         // Hämta produktens id från URL:en
         const itemId = parseInt(req.params.id);
         

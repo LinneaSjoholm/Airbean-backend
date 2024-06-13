@@ -11,7 +11,7 @@ const cartRouter = Router();
 // "POST"/cart - Lägga ett objekt i sin kundvagn
 cartRouter.post('/', validateCart, addToCart);
 
-// // "GET"/cart Få fram kundvagnen med totalpris på ordern som gäst
+// "GET"/cart Få fram kundvagnen med totalpris på ordern som gäst
 cartRouter.get('/', viewCart);
 
 // "DELETE"/cart ta bort ett objekt från sin kundvagn
