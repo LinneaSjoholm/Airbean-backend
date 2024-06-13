@@ -136,6 +136,12 @@ POST http://localhost:8000/admin/login
 	"password" : "admin1234"
   }
 
+- Incorrect username or password, Response, 404 Not found:
+  ```json
+  {
+	"message": "Invalid username or password"
+  }
+
 POST http://localhost:8000/admin/logout
 - Description: This endpoint allows admin to log out.
 
