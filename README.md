@@ -170,6 +170,12 @@ POST http://localhost:8000/admin/products
 	}
    }
 
+- Example 400 Bad Request:
+  ```json
+  {
+	"error": "All fields are required"
+  }
+
 PUT http://localhost:8000/admin/products/:id
 - Header: Authorization: Bearer (token)
 - Description: This endpoint allows admin to modify a product on the menu.
