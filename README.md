@@ -170,7 +170,7 @@ POST http://localhost:8000/admin/products
 	}
    }
 
-- Example 400 Bad Request:
+- Example Response, 400 Bad Request:
   ```json
   {
 	"error": "All fields are required"
@@ -201,7 +201,7 @@ PUT http://localhost:8000/admin/products/:id
 	}
   }
 
-- Example with incorrect token, 401 Unauthorized:
+- Example Response with incorrect token, 401 Unauthorized:
   ```json
   {
 	"error": "Access denied. Only administrators can perform this action."
