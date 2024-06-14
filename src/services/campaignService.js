@@ -5,7 +5,7 @@ import { campaignDb } from '../config/db.js'
 async function addCampaignOffer(req, res) {
 
     // Destrukturera title, desc och discount från req.body
-    const { title, desc, discount } = req.body;
+    const { title, desc, price, discount } = req.body;
 
     // Hitta produkten i menyn {menu - data.js}
     const product = menu.find(item => item.title === title);
@@ -15,7 +15,7 @@ async function addCampaignOffer(req, res) {
     }
     
     // Skapa ett kampanjobjekt
-    const campaign = { title, desc, discount };
+    const campaign = { title, desc, price, discount };
 
     // Försök att lägga till kampanjen i databasen {campaign.db}
 try {
@@ -26,6 +26,7 @@ try {
         message: 'Campaign added successfully',
         title: newCampaign.title,
         desc : newCampaign.desc,
+        price: newCampaign.price,
         discount: `${newCampaign.discount}%`,
     };
     res.status(201).json(response);

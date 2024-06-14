@@ -7,20 +7,13 @@ async function addNewProductToMenu (req, res) {
     // Hämta produktens titel, beskrivning och pris från request body
    const { title, desc, price } = req.body;
 
-   // Kontrollera prisets värde
-   const priceNumber = parseFloat(price);
-   if (isNaN(priceNumber) || priceNumber <= 0) {
-       return res.status(400).json({ error: "Price must be a positive number" });
-   }
-
    // Kolla om produkten redan finns i menyn
    try {
     const newProduct = {
         id: menu.length > 0 ? menu[menu.length - 1].id + 1 : 1,
         title,
         desc,
-        preptime: product.preptime,
-        price: priceNumber,
+        price,
         createdAt: new Date(),
     };
 
