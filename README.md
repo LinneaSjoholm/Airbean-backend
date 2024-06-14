@@ -236,7 +236,7 @@ POST http://localhost:8000/admin/campaign
   {
 	"title": "Cortado",
 	"desc" : "Njut av en god Cortado med en bit Budapest",
-	"price" : 40,
+        "price" : 40,
 	"discount" : "50"
   }
 
@@ -246,7 +246,7 @@ POST http://localhost:8000/admin/campaign
 	"message": "Campaign added successfully",
 	"title": "Cortado",
 	"desc": "Njut av en god Cortado med en bit Budapest",
-  	"price" : 40,
+        "price" : 40,
 	"discount": "50%"
   }
 
