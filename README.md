@@ -35,7 +35,7 @@ GET http://localhost:8000/about
 ### 3. User Registration and Authentication
 POST http://localhost:8000/user/register
 - Description: This endpoint allows a new user to register.
-- Example Response 400 Bad Request:
+- Example Response, 400 Bad Request:
   ```json
   {
     "error": "Username already exists"
