@@ -148,7 +148,7 @@ POST http://localhost:8000/admin/logout
 ### 7. Admin Product Management
 POST http://localhost:8000/admin/products
 - Header: Authorization: Bearer (token)
-- Description: This endpoint allows admin to add new product to menu.
+- Description: This endpoint allows admin to add new product to the menu.
 - Example Request in body:
   ```json
 	{
@@ -203,14 +203,14 @@ PUT http://localhost:8000/admin/products/:id
 
 DELETE http://localhost:8000/admin/products/:id
 - Header: Authorization: Bearer (token)
-- Description: This endpoint allows admin to remove a product from menu.
+- Description: This endpoint allows admin to remove a product from the menu.
 - Response:
   ```json
   {
      "message": "Product removed successfully",
      "updatedMenu": [...]
   }
-- Response when trying to delete product that don't exist, 404 Not Found:
+- Response when trying to delete a product that don't exist, 404 Not Found:
   ```json
   {
 	"message": "Product not found"
