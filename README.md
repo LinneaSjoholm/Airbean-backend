@@ -229,8 +229,9 @@ POST http://localhost:8000/admin/campaign
   ```json
   {
 	"title": "Cortado",
-	"desc" : "Njut av en god Cortado med en bit Budapest för endast 50 kr",
-	"discount" : "50%"
+	"desc" : "Njut av en god Cortado med en bit Budapest",
+	"price" : 40,
+	"discount" : "50"
   }
 
 - Example Response:
@@ -238,7 +239,8 @@ POST http://localhost:8000/admin/campaign
   {
 	"message": "Campaign added successfully",
 	"title": "Cortado",
-	"desc": "Njut av en god Cortado med en bit Budapest för endast 50 kr",
+	"desc": "Njut av en god Cortado med en bit Budapest",
+  	"price" : 40,
 	"discount": "50%"
   }
 
